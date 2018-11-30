@@ -5,10 +5,10 @@ The minimum viable testing scaffold is setup for each language in the `scaffolds
 To scaffold a day, use the `scaffold` command.
 
 ```
-scaffold # Uses today's date, and random language
-scaffold 23 # Uses the 23rd, with a random language
-scaffold 23 # Fails because the day has already been scaffolded
-scaffold 23 javascript --force # Deletes the existing scaffold, and changes it to javascript
+./scaffold # Uses today's date, and random language
+./scaffold 23 # Uses the 23rd, with a random language
+./scaffold 23 # Fails because the day has already been scaffolded
+./scaffold 23 javascript --force # Deletes the existing scaffold, and changes it to javascript
 ```
 
 The exercises live in the `exercises` folder, after they've been scaffolded.
