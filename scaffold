@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+
+force = ARGV.any? { |arg| arg == "--force" }
+day = ARGV.find { |arg| arg.to_i.positive? }
+language = ARGV.find { |arg| Dir.exists?("scaffolds/#{arg}") }
+
+day = day || Time.now.day
+exercise_directory = "exercises/day_#{day.to_s.rjust(2, "0")}"
+
+language = language || Dir.glob("scaffolds/*").sample.split("/").last
+scaffold_directory =  "scaffolds/#{language}"
+
+if Dir.exists?(exercise_directory)
+  if force
+    FileUtils.rm_r(exercise_directory)
+  else
+    puts "#{exercise_directory} has already been scaffolded! Use --force to overwrite."
+    exit
+  end
+end
+
+FileUtils.cp_r scaffold_directory, exercise_directory
+
+puts "You're using #{language} for day #{day}!"
