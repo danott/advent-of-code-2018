@@ -11,6 +11,6 @@ scaffold 23 # Fails because the day has already been scaffolded
 scaffold 23 javascript --force # Deletes the existing scaffold, and changes it to javascript
 ```
 
-The exercies live in the `exercies` folder, after they've been scaffolded.
+The exercises live in the `exercises` folder, after they've been scaffolded.
 
 This might be a terrible idea that has me looking at lots of language docs. 😬
