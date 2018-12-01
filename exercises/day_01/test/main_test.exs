@@ -10,26 +10,26 @@ defmodule FrequencyFixerUpper do
   end
 
   def find_first_duplicate(string) do
-    initial_reduced_value = {0, [0]}
+    history = [0]
     instructions = parse_instructions(string)
-    find_first_duplicate(initial_reduced_value, instructions)
+    find_first_duplicate(history, instructions)
   end
 
-  defp find_first_duplicate(reduced_value, instructions) when is_tuple(reduced_value) do
-    Enum.reduce_while(instructions, reduced_value, &reduce_to_first_duplicate_or_total_with_history_tuple/2)
+  defp find_first_duplicate(history, instructions) when is_list(history) do
+    Enum.reduce_while(instructions, history, &history_or_first_duplicate/2)
       |> find_first_duplicate(instructions)
   end
 
-  defp find_first_duplicate(reduced_value, _instrutions) when is_integer(reduced_value) do
-    reduced_value
+  defp find_first_duplicate(total, _) when is_integer(total) do
+    total
   end
 
-  defp reduce_to_first_duplicate_or_total_with_history_tuple(integer, { total, previous_totals }) do
-    next_total = total + integer
-    if Enum.member?(previous_totals, next_total) do
-      {:halt, next_total}
+  defp history_or_first_duplicate(integer, history) do
+    total = List.first(history) + integer
+    if Enum.member?(history, total) do
+      {:halt, total}
     else
-      {:cont, {next_total, previous_totals ++ [next_total]}}
+      {:cont, [total] ++ history}
     end
   end
 end
