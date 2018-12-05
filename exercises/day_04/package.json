@@ -1,0 +1,20 @@
+{
+  "name": "advent-of-code-2018",
+  "version": "1.0.0",
+  "description": "My solutions to advent-of-code 2018",
+  "main": "index.js",
+  "author": "Dan Ott",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.3"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
